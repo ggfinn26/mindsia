@@ -50,14 +50,18 @@
             position: relative;
             width: 100%;
             height: 100vh;
+            height: 100dvh;
             margin: 0;
             background: #ffffff;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         @media (min-width: 768px) {
             #presentation-container {
                 height: 100vh;
+                height: 100dvh;
                 margin: 0;
                 border-radius: 0;
                 box-shadow: none;
@@ -113,7 +117,7 @@
             flex-grow: 1;
             overflow-y: auto;
             padding-right: 0.5rem;
-            padding-bottom: 4rem; /* Buffer for navigation buttons */
+            padding-bottom: 5rem; /* Increased buffer for mobile navigation buttons */
         }
 
         @media (min-width: 768px) {
@@ -138,7 +142,7 @@
     </style>
 </head>
 
-<body class="h-screen w-screen flex flex-col justify-between font-sans">
+<body class="h-[100dvh] w-screen flex flex-col justify-between font-sans overflow-hidden">
 
     <!-- Top Progress Bar -->
     <div class="w-full h-1.5 bg-white/20 fixed top-0 left-0 z-50">
@@ -862,18 +866,18 @@
         <!-- Navigation Controls (Bottom Absolute) -->
         <div class="absolute bottom-4 md:bottom-6 left-0 w-full px-4 md:px-8 flex justify-between items-center z-50">
             <button onclick="prevSlide()"
-                class="w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center text-corporate-700 transition-colors focus:outline-none backdrop-blur-sm">
-                <i class="fa-solid fa-chevron-left"></i>
+                class="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-corporate-700 transition-colors focus:outline-none border border-gray-100 z-[60]">
+                <i class="fa-solid fa-chevron-left text-lg"></i>
             </button>
 
             <div
-                class="bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold text-corporate-700 shadow border border-gray-200">
-                Slide <span id="current-slide-num">1</span> / <span id="total-slide-num">13</span>
+                class="bg-white px-4 py-2 rounded-full text-sm font-bold text-corporate-700 shadow-md border border-gray-200 z-[60]">
+                <span id="current-slide-num">1</span> / <span id="total-slide-num">13</span>
             </div>
 
             <button onclick="nextSlide()"
-                class="w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center text-corporate-700 transition-colors focus:outline-none backdrop-blur-sm">
-                <i class="fa-solid fa-chevron-right"></i>
+                class="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-corporate-700 transition-colors focus:outline-none border border-gray-100 z-[60]">
+                <i class="fa-solid fa-chevron-right text-lg"></i>
             </button>
         </div>
 
