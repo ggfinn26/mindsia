@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitch Deck: Sistem ERP & HRIS Mindsia</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        corporate: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            500: '#334e68',
+                            700: '#243b53',
+                            900: '#102a43',
+                        },
+                        accent: {
+                            500: '#f59e0b', // Amber/Orange to match the new vibe
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #102a43;
+            background-image: radial-gradient(circle at top right, #243b53, #102a43);
+            color: #333;
+            overflow: hidden;
+        }
+
+        #presentation-container {
+            position: relative;
+            width: 100%;
+            max-width: 1280px;
+            height: 85vh;
+            margin: 4vh auto;
+            background: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 3rem 4rem;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            pointer-events: none;
+            transform: translateY(20px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slide.active {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+            z-index: 10;
+        }
+
+        .slide-content>* {
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s ease-out;
+        }
+
+        .slide.active .slide-content>* {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide.active .slide-content>*:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .slide.active .slide-content>*:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .slide.active .slide-content>*:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        .slide.active .slide-content>*:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+
+        .slide.active .slide-content>*:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+
+        .slide-content {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .slide-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .slide-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .slide-content::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body class="h-screen w-screen flex flex-col justify-between font-sans">
+
+    <!-- Top Progress Bar -->
+    <div class="w-full h-1.5 bg-white/20 fixed top-0 left-0 z-50">
+        <div id="progress-bar" class="h-full bg-accent-500 transition-all duration-300 w-0"></div>
+    </div>
+
+    <!-- Main Presentation Area -->
+    <div id="presentation-container">
+
+        <!-- SLIDE 1: Cover -->
+        <div class="slide active">
+            <div class="slide-content flex flex-col items-center justify-center h-full text-center relative">
+                <div class="absolute top-0 right-0 text-gray-400 font-semibold text-sm">PROPOSAL • APRIL 2026</div>
+                <div class="w-24 h-24 bg-corporate-100 rounded-full flex items-center justify-center mb-8">
+                    <i class="fa-solid fa-layer-group text-4xl text-corporate-700"></i>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-corporate-900 mb-4 tracking-tight">Sistem Manajemen
+                    Terintegrasi</h1>
+                <h2 class="text-2xl text-accent-600 font-medium mb-8">Platform Web & App — dari analisis scope hingga
+                    go-live.</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mb-12">"Solusi Digitalisasi Manajemen, SDM, dan Operasional
+                    untuk Mindsia"</p>
+
+                <div
+                    class="mt-auto border-t border-gray-200 pt-6 w-full max-w-lg flex justify-between items-end text-left">
+                    <div>
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Disiapkan Oleh</p>
+                        <p class="font-bold text-corporate-700">M Ahnaf Nadewa B. A.</p>
+                        <p class="text-sm text-accent-600 font-medium"><i class="fa-solid fa-laptop-code mr-1"></i>
+                            Independent IT Consultant</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Untuk</p>
+                        <p class="font-bold text-corporate-700">Mindsia</p>
+                        <p class="text-sm text-gray-500">UMKM / Lembaga Edukasi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: Ringkasan Eksekutif -->
+        <div class="slide">
+            <div class="slide-content flex flex-col justify-center h-full">
+                <h2 class="text-3xl font-bold text-corporate-900 mb-2">Ringkasan Eksekutif</h2>
+                <p class="text-gray-600 mb-10">Angka-angka utama dari proposal pengembangan sistem ini.</p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+                    <div class="border-l-4 border-accent-500 pl-4">
+                        <div class="text-4xl font-black text-corporate-900 mb-1">7+</div>
+                        <div class="font-bold text-sm text-gray-800">Peran Pengguna</div>
+                        <p class="text-xs text-gray-500 mt-1">Admin, Direksi, PIC, Marketing, Tutor, Member, Publik.</p>
+                    </div>
+                    <div class="border-l-4 border-blue-500 pl-4">
+                        <div class="text-4xl font-black text-corporate-900 mb-1">20+</div>
+                        <div class="font-bold text-sm text-gray-800">Modul Fitur Utama</div>
+                        <p class="text-xs text-gray-500 mt-1">Dari registrasi, form otomatis, KPI, sampai raport.</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <div class="text-4xl font-black text-corporate-900 mb-1">5-6</div>
+                        <div class="font-bold text-sm text-gray-800">Bulan Timeline</div>
+                        <p class="text-xs text-gray-500 mt-1">Dibangun secara bertahap menggunakan metodologi Agile.</p>
+                    </div>
+                    <div class="border-l-4 border-purple-500 pl-4">
+                        <div class="text-3xl font-black text-corporate-900 mb-1">Rp 55<span class="text-xl">jt</span>
+                        </div>
+                        <div class="font-bold text-sm text-gray-800">Paket Rekomendasi</div>
+                        <p class="text-xs text-gray-500 mt-1">Sistem berbasis Web komprehensif, mulai dari HR hingga
+                            LMS.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong class="text-corporate-900">Intisari:</strong> Proposal ini membangun sistem end-to-end
+                        sesuai lingkup rapat HR: company profile, pendaftaran terintegrasi payment gateway, dashboard
+                        multi-peran (Direksi, Manager, Tutor, Member), dengan proteksi modul <i>view-only</i>. Investasi
+                        awal paket rekomendasi adalah Rp 55 juta, dan terbukti <span
+                            class="font-bold text-green-600">lebih hemat ±Rp 38 juta</span> dibandingkan
+                        mengkombinasikan banyak layanan SaaS dalam 3 tahun operasional.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: Problem -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="w-10 h-10 rounded bg-red-100 flex items-center justify-center text-red-600"><i
+                            class="fa-solid fa-triangle-exclamation"></i></span>
+                    <h2 class="text-3xl font-bold text-corporate-900">Tantangan Saat Ini</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                        <i class="fa-solid fa-server text-2xl text-red-500 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Data Tersebar (Silo)</h3>
+                        <p class="text-gray-600">Divisi HR, Keuangan, Operasional, dan Akademik (Tutor/Member) masih
+                            menggunakan sistem atau file yang terpisah-pisah.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                        <i class="fa-solid fa-file-signature text-2xl text-orange-500 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Proses Manual yang Lambat</h3>
+                        <p class="text-gray-600">Pembuatan dokumen seperti Kwitansi, SP, Kontrak, dan Form Reimbursement
+                            memakan waktu dan rawan <i>human error</i>.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                        <i class="fa-solid fa-user-secret text-2xl text-yellow-500 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Risiko Kebocoran HAKI</h3>
+                        <p class="text-gray-600">Modul pembelajaran (PDF/Materi) rawan disalin atau diunduh oleh pihak
+                            yang tidak berhak, merugikan aset intelektual Mindsia.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
+                        <i class="fa-solid fa-money-bill-trend-up text-2xl text-red-600 mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">Biaya SaaS Membengkak</h3>
+                        <p class="text-gray-600">Menggunakan platform pihak ketiga (berlangganan per <i>user</i>) akan
+                            semakin mencekik <i>cash flow</i> seiring bertambahnya karyawan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: Lingkup Sistem -->
+        <div class="slide">
+            <div class="slide-content text-center flex flex-col items-center justify-center">
+                <h2 class="text-4xl font-bold text-corporate-900 mb-2">Lingkup Sistem Terpadu</h2>
+                <p class="text-lg text-gray-600 mb-10 max-w-3xl">Dipetakan ke dalam 4 domain utama hasil eskalasi
+                    kebutuhan Mindsia.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 w-full justify-center">
+                    <div
+                        class="bg-white border border-gray-200 p-6 rounded-2xl shadow relative overflow-hidden text-left">
+                        <i class="fa-solid fa-globe text-3xl text-blue-500 mb-4"></i>
+                        <h3 class="text-lg font-bold text-corporate-900 mb-2">Publik & Registrasi</h3>
+                        <ul class="text-gray-600 text-sm space-y-2">
+                            <li>• Company Profile & Info</li>
+                            <li>• Pendaftaran + Payment Gateway</li>
+                            <li>• Kwitansi otomatis</li>
+                            <li>• Quota Tracking (Admin)</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="bg-white border border-gray-200 p-6 rounded-2xl shadow relative overflow-hidden text-left">
+                        <i class="fa-solid fa-building text-3xl text-orange-500 mb-4"></i>
+                        <h3 class="text-lg font-bold text-corporate-900 mb-2">HR, Fin, & Ops</h3>
+                        <ul class="text-gray-600 text-sm space-y-2">
+                            <li>• Tabel Hierarki Direksi</li>
+                            <li>• Upload SOP & Flowchart</li>
+                            <li>• Form Otomatis (SP, Kontrak, PHK)</li>
+                            <li>• KPI Recruitment & Personalia</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="bg-white border border-gray-200 p-6 rounded-2xl shadow relative overflow-hidden text-left">
+                        <i class="fa-solid fa-chart-line text-3xl text-green-500 mb-4"></i>
+                        <h3 class="text-lg font-bold text-corporate-900 mb-2">Manager & Marketing</h3>
+                        <ul class="text-gray-600 text-sm space-y-2">
+                            <li>• Buku Surat & Inventaris</li>
+                            <li>• Kelompok Pre-test</li>
+                            <li>• Scoreboard Cabang</li>
+                            <li>• Financial Statement</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="bg-white border border-gray-200 p-6 rounded-2xl shadow relative overflow-hidden text-left">
+                        <i class="fa-solid fa-graduation-cap text-3xl text-purple-500 mb-4"></i>
+                        <h3 class="text-lg font-bold text-corporate-900 mb-2">Tutor & LMS Modul</h3>
+                        <ul class="text-gray-600 text-sm space-y-2">
+                            <li>• Absensi Tutor & Member</li>
+                            <li>• Raport & Daily Assessment</li>
+                            <li>• Akses Raport Mandiri</li>
+                            <li>• Modul <i>View-Only</i> (Anti-copy)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: Tech Stack & Pendekatan -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="flex items-center gap-3 mb-8">
+                    <span class="w-10 h-10 rounded bg-gray-100 flex items-center justify-center text-gray-700"><i
+                            class="fa-solid fa-microchip"></i></span>
+                    <h2 class="text-3xl font-bold text-corporate-900">Tech Stack & Pendekatan</h2>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex-1 space-y-6">
+                        <h3 class="font-bold text-xl text-corporate-800">Arsitektur Modular (Battle-Tested)</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-gray-50 p-3 rounded border">
+                                <span class="block text-xs text-gray-500 uppercase">Frontend</span>
+                                <span class="font-bold text-gray-800"><i
+                                        class="fa-brands fa-react text-blue-500 mr-2"></i>Next.js + Tailwind</span>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded border">
+                                <span class="block text-xs text-gray-500 uppercase">Backend API</span>
+                                <span class="font-bold text-gray-800"><i
+                                        class="fa-brands fa-node-js text-green-600 mr-2"></i>Node / Laravel</span>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded border">
+                                <span class="block text-xs text-gray-500 uppercase">Database</span>
+                                <span class="font-bold text-gray-800"><i
+                                        class="fa-solid fa-database text-blue-400 mr-2"></i>PostgreSQL</span>
+                            </div>
+                            <div class="bg-gray-50 p-3 rounded border">
+                                <span class="block text-xs text-gray-500 uppercase">Payment & Storage</span>
+                                <span class="font-bold text-gray-800"><i
+                                        class="fa-solid fa-credit-card text-purple-500 mr-2"></i>Midtrans + R2</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600">Tumpukan teknologi ini dipilih untuk kecepatan akses, biaya
+                            pemeliharaan rendah, dan keamanan jangka panjang.</p>
+                    </div>
+
+                    <div class="flex-1 bg-accent-50 rounded-2xl p-6 border border-accent-200">
+                        <h3 class="font-bold text-xl text-accent-800 mb-4">Pendekatan: Agile & Efisiensi</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-people-arrows text-accent-600 mt-1 mr-3 text-lg"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Komunikasi Terpusat</h4>
+                                    <p class="text-sm text-gray-600">Komunikasi langsung dengan Lead Consultant.
+                                        Keputusan teknis diambil dengan cepat tanpa birokrasi yang rumit.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-bolt text-accent-600 mt-1 mr-3 text-lg"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Modern Development Tools</h4>
+                                    <p class="text-sm text-gray-600">Penggunaan framework modern dan automasi
+                                        mempercepat pembuatan struktur database dan form, menjamin produktivitas dan
+                                        meminimalisir <i>human-error</i>.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: Comparison -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-corporate-900">Total Cost of Ownership (3 Tahun)</h2>
+                    <p class="text-gray-600">Kapan Custom Build melewati SaaS dari sisi efisiensi biaya kumulatif?</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+                    <div class="border-2 border-green-500 rounded-xl p-6 bg-white relative">
+                        <div
+                            class="absolute -top-3 left-6 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
+                            Custom Build</div>
+                        <h3 class="text-2xl font-bold mt-2">Rp 55 Juta <span
+                                class="text-sm font-normal text-gray-500">Sekali Bayar</span></h3>
+                        <p class="text-sm font-bold text-gray-700 mb-4">+ Rp 925rb / bulan (Hosting)</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i>Integrasi penuh (data tidak silo)
+                            </li>
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i>Tidak ada biaya per-user (Skala
+                                Bebas)</li>
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i>Aset DM/Source Code milik Mindsia
+                                100%</li>
+                            <li><i class="fa-solid fa-check text-green-500 mr-2"></i>Modul View-Only eksklusif sesuai
+                                SOP</li>
+                        </ul>
+                    </div>
+
+                    <div class="border border-gray-300 rounded-xl p-6 bg-gray-50 relative">
+                        <div
+                            class="absolute -top-3 left-6 bg-gray-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
+                            SaaS Bundle Pasaran</div>
+                        <h3 class="text-2xl font-bold mt-2">± Rp 3,5 Juta <span
+                                class="text-sm font-normal text-gray-500">/ Bulan</span></h3>
+                        <p class="text-sm text-gray-500 mb-4">Langganan terus-menerus (Asumsi 50 user)</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i>Butuh 3-4 platform beda (HR, LMS,
+                                Finance)</li>
+                            <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i>Biaya naik tiap penambahan karyawan
+                            </li>
+                            <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i>Data menumpang di server vendor</li>
+                            <li><i class="fa-solid fa-xmark text-red-500 mr-2"></i>Raport & Scoreboard cabang tidak
+                                tercakup</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-corporate-50 border border-corporate-200 p-4 rounded-lg flex items-center justify-between">
+                    <div>
+                        <h4 class="font-bold text-corporate-900">Titik Impas (Break-Even): <span
+                                class="text-accent-600">Bulan ke-22</span></h4>
+                        <p class="text-sm text-gray-600">Custom mulai lebih murah dari SaaS sekitar pertengahan tahun
+                            ke-2.</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="block text-xs font-bold text-green-600 uppercase">Hemat 3 Tahun</span>
+                        <span class="text-2xl font-black text-green-600">± Rp 38 Juta</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Paket Investasi (UPDATED 4 COLUMNS) -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="text-center mb-6">
+                    <h2 class="text-3xl font-bold text-corporate-900">Rincian Investasi Pembuatan</h2>
+                    <p class="text-gray-600">Empat opsi paket modular disesuaikan dengan budget & prioritas kebutuhan
+                        Mindsia.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Paket 1 -->
+                    <div
+                        class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition flex flex-col">
+                        <h3 class="font-bold text-gray-500 uppercase tracking-wider text-sm mb-2">Starter</h3>
+                        <div class="text-3xl font-black text-corporate-900 mb-1">Rp 10<span
+                                class="text-lg text-gray-500 font-bold">jt</span></div>
+                        <p class="text-xs text-gray-500 mb-4 border-b pb-4">Company Profile & HR</p>
+                        <ul class="space-y-3 text-xs text-gray-600 mb-6 flex-grow">
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-green-500 mt-0.5 mr-2"></i><span>Company Profile &
+                                    Info Program</span></li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-green-500 mt-0.5 mr-2"></i><span>Seluruh Modul HR
+                                    (Form, SP, Payroll)</span></li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-green-500 mt-0.5 mr-2"></i><span>Buku Agenda Surat
+                                    (Manager/PIC)</span></li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-green-500 mt-0.5 mr-2"></i><span>Buku Inventaris
+                                    (Manager/PIC)</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Paket 2 -->
+                    <div
+                        class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition flex flex-col">
+                        <h3 class="font-bold text-blue-600 uppercase tracking-wider text-sm mb-2">Pro</h3>
+                        <div class="text-3xl font-black text-corporate-900 mb-1">Rp 35<span
+                                class="text-lg text-gray-500 font-bold">jt</span></div>
+                        <p class="text-xs text-gray-500 mb-4 border-b pb-4">Finance & Registrasi</p>
+                        <ul class="space-y-3 text-xs text-gray-600 mb-6 flex-grow">
+                            <li class="flex items-start"><i class="fa-solid fa-plus text-blue-500 mt-0.5 mr-2"></i><span
+                                    class="font-bold text-gray-800">Semua fitur Starter</span></li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-blue-500 mt-0.5 mr-2"></i><span>Modul Finance & KPI
+                                    (Reimbursement)</span></li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-blue-500 mt-0.5 mr-2"></i><span>Modul Marketing (Omzet
+                                    & Fin. Statement)</span></li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-blue-500 mt-0.5 mr-2"></i><span>Pendaftaran & Payment
+                                    Gateway Terintegrasi</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Paket 3 (Rekomendasi) -->
+                    <div
+                        class="bg-corporate-900 text-white rounded-xl p-5 shadow-xl relative transform md:-translate-y-2 border-2 border-accent-500 flex flex-col z-10">
+                        <div
+                            class="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent-500 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase shadow whitespace-nowrap tracking-wider">
+                            ★ Rekomendasi</div>
+                        <h3 class="font-bold text-accent-400 uppercase tracking-wider text-sm mb-2 mt-2">Complete</h3>
+                        <div class="text-3xl font-black text-white mb-1">Rp 55<span
+                                class="text-lg text-gray-300 font-bold">jt</span></div>
+                        <p class="text-xs text-gray-400 mb-4 border-b border-gray-700 pb-4">LMS Terintegrasi Penuh</p>
+                        <ul class="space-y-3 text-xs text-gray-200 mb-6 flex-grow">
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-plus text-accent-400 mt-0.5 mr-2"></i><span
+                                    class="font-bold text-white">Semua fitur Pro</span></li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-accent-400 mt-0.5 mr-2"></i><span>Modul LMS (Tutor &
+                                    Member Dashboard)</span></li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-accent-400 mt-0.5 mr-2"></i><span>Raport & Daily
+                                    Assessment (Direct/Personal)</span></li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-accent-400 mt-0.5 mr-2"></i><span
+                                    class="font-bold text-accent-300">Modul Anti-Copy (View-Only & DRM)</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Paket 4 -->
+                    <div
+                        class="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition flex flex-col">
+                        <h3 class="font-bold text-purple-600 uppercase tracking-wider text-sm mb-2">Ultimate</h3>
+                        <div class="text-3xl font-black text-corporate-900 mb-1">Rp 65<span
+                                class="text-lg text-gray-500 font-bold">jt</span></div>
+                        <p class="text-xs text-gray-500 mb-4 border-b pb-4">Web + Mobile App</p>
+                        <ul class="space-y-3 text-xs text-gray-600 mb-6 flex-grow">
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-plus text-purple-500 mt-0.5 mr-2"></i><span
+                                    class="font-bold text-gray-800">Semua fitur Complete</span></li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-mobile-screen text-purple-500 mt-0.5 mr-2"></i><span>Aplikasi
+                                    Mobile Native (Android)</span></li>
+                            <li class="flex items-start"><i
+                                    class="fa-brands fa-apple text-purple-500 mt-0.5 mr-2"></i><span>Aplikasi Mobile
+                                    Native (iOS)</span></li>
+                            <li class="flex items-start"><i
+                                    class="fa-regular fa-bell text-purple-500 mt-0.5 mr-2"></i><span>Notifikasi Push
+                                    Langsung ke HP User</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: Biaya Infrastruktur -->
+        <div class="slide">
+            <div class="slide-content text-center flex flex-col items-center justify-center">
+                <h2 class="text-3xl font-bold text-corporate-900 mb-2">Biaya Hosting & Operasional</h2>
+                <p class="text-gray-600 mb-8">Estimasi biaya rutin transparan setelah sistem Live (Untuk skala UMKM ≤100
+                    user aktif).</p>
+
+                <div class="w-full max-w-3xl overflow-x-auto rounded-lg shadow-sm border border-gray-200">
+                    <table class="w-full text-sm text-left text-gray-600">
+                        <thead class="bg-gray-50 text-gray-800 uppercase text-xs">
+                            <tr>
+                                <th class="px-4 py-3">Komponen</th>
+                                <th class="px-4 py-3">Provider Pilihan</th>
+                                <th class="px-4 py-3 text-right">Est. Biaya / Bulan</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 bg-white">
+                            <tr>
+                                <td class="px-4 py-3 font-medium">VPS (4 vCPU, 8GB RAM, NVMe)</td>
+                                <td class="px-4 py-3">Biznet Gio / Contabo</td>
+                                <td class="px-4 py-3 text-right">Rp 350.000</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-medium">Object Storage (File & Modul)</td>
+                                <td class="px-4 py-3">Cloudflare R2 / Wasabi</td>
+                                <td class="px-4 py-3 text-right">Rp 100.000</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-medium">CDN + Keamanan DDoS</td>
+                                <td class="px-4 py-3">Cloudflare Pro</td>
+                                <td class="px-4 py-3 text-right">Rp 100.000</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-medium">Backup Harian & Email SMTP</td>
+                                <td class="px-4 py-3">S3-compatible + Mailgun</td>
+                                <td class="px-4 py-3 text-right">Rp 250.000</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-medium">Domain, SSL, & Uptime Monitor</td>
+                                <td class="px-4 py-3">Berbagai Provider</td>
+                                <td class="px-4 py-3 text-right">Rp 125.000</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="bg-corporate-50 font-bold text-corporate-900">
+                                <td colspan="2" class="px-4 py-4 text-right">TOTAL ESTIMASI HOSTING :</td>
+                                <td class="px-4 py-4 text-right text-lg text-accent-600">± Rp 925.000 <span
+                                        class="text-xs text-gray-500 font-normal">/ bln</span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <p class="text-xs text-gray-400 mt-4">*Biaya tidak termasuk fee payment gateway (Midtrans 1.5 - 2.5% per
+                    transaksi).</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: Limitasi & Mitigasi (PENTING) -->
+        <div class="slide">
+            <div class="slide-content">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="w-10 h-10 rounded bg-yellow-100 flex items-center justify-center text-yellow-600"><i
+                            class="fa-solid fa-scale-balanced"></i></span>
+                    <h2 class="text-3xl font-bold text-corporate-900">Keterbukaan: Limitasi & Mitigasi</h2>
+                </div>
+                <p class="text-gray-600 mb-6">Hal yang perlu Mindsia ketahui secara transparan sebelum memulai proyek
+                    kerja sama ini.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Item 1 -->
+                    <div class="bg-white border border-gray-200 p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-2"><i
+                                class="fa-solid fa-bullseye text-gray-400 mr-2 text-xl"></i>
+                            <h4 class="font-bold text-gray-800">Fokus Pengerjaan Terpusat</h4>
+                        </div>
+                        <div class="mt-2 text-sm space-y-2">
+                            <p><span
+                                    class="bg-red-100 text-red-700 px-2 py-0.5 rounded text-xs font-bold mr-1">LIMIT</span>
+                                Untuk menjaga kualitas dan konsistensi kode, pengerjaan modul besar tidak dilakukan
+                                secara masif bersamaan.</p>
+                            <p><span
+                                    class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold mr-1">MITIGASI</span>
+                                Pekerjaan di-breakdown (Sprint) per bulan dengan target demo progress yang transparan
+                                dan terukur.</p>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="bg-white border border-gray-200 p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-2"><i
+                                class="fa-solid fa-chart-gantt text-gray-400 mr-2 text-xl"></i>
+                            <h4 class="font-bold text-gray-800">Alokasi Waktu & Sumber Daya</h4>
+                        </div>
+                        <div class="mt-2 text-sm space-y-2">
+                            <p><span
+                                    class="bg-red-100 text-red-700 px-2 py-0.5 rounded text-xs font-bold mr-1">LIMIT</span>
+                                Menghindari <i>bottleneck</i> pada proses testing dan implementasi fitur yang saling
+                                terkait.</p>
+                            <p><span
+                                    class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold mr-1">MITIGASI</span>
+                                Tugas dipecah menjadi *milestone* spesifik, dan dokumentasi setiap modul disusun secara
+                                ketat antar sesi.</p>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="bg-white border border-gray-200 p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-2"><i
+                                class="fa-solid fa-code-merge text-gray-400 mr-2 text-xl"></i>
+                            <h4 class="font-bold text-gray-800">Scope Change (Perubahan Fitur)</h4>
+                        </div>
+                        <div class="mt-2 text-sm space-y-2">
+                            <p><span
+                                    class="bg-red-100 text-red-700 px-2 py-0.5 rounded text-xs font-bold mr-1">LIMIT</span>
+                                Rombak alur form / logika bisnis di pertengahan akan menggeser timeline 2-4 minggu.</p>
+                            <p><span
+                                    class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold mr-1">MITIGASI</span>
+                                Ada workshop & Sign-off desain di awal. Scope change >10% = adendum kontrak tersendiri.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="bg-white border border-gray-200 p-4 rounded-lg shadow-sm">
+                        <div class="flex items-center mb-2"><i
+                                class="fa-solid fa-headset text-gray-400 mr-2 text-xl"></i>
+                            <h4 class="font-bold text-gray-800">Standard Business SLA</h4>
+                        </div>
+                        <div class="mt-2 text-sm space-y-2">
+                            <p><span
+                                    class="bg-red-100 text-red-700 px-2 py-0.5 rounded text-xs font-bold mr-1">LIMIT</span>
+                                Dukungan teknis utama beroperasi pada jam kerja standar (Business Hours), bukan 24/7.
+                            </p>
+                            <p><span
+                                    class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold mr-1">MITIGASI</span>
+                                Sistem dilengkapi auto-restart & monitoring 24 jam. Penanganan darurat di luar jam kerja
+                                diatur dalam skema terpisah.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: Skema Pembayaran -->
+        <div class="slide">
+            <div class="slide-content text-center flex flex-col justify-center items-center">
+                <h2 class="text-3xl font-bold text-corporate-900 mb-8">Termin Pembayaran <span
+                        class="text-xl text-gray-500 font-normal block">(Berdasarkan Paket Complete)</span></h2>
+
+                <div class="w-full max-w-4xl relative mb-12">
+                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0">
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10 text-left">
+                        <div class="bg-white p-6 rounded-xl border-t-4 border-blue-500 shadow-lg">
+                            <div class="text-blue-500 font-black text-2xl mb-1">30%</div>
+                            <h4 class="font-bold text-gray-800 text-lg mb-2">Rp 16,5 Juta</h4>
+                            <p class="text-sm text-gray-600">Down Payment (DP) dibayarkan saat tanda tangan kontrak &
+                                Kick-off.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border-t-4 border-accent-500 shadow-lg">
+                            <div class="text-accent-500 font-black text-2xl mb-1">25%</div>
+                            <h4 class="font-bold text-gray-800 text-lg mb-2">Rp 13,75 Juta</h4>
+                            <p class="text-sm text-gray-600">Setelah modul Company Profile, HR, Surat, & Registrasi
+                                selesai.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border-t-4 border-purple-500 shadow-lg">
+                            <div class="text-purple-500 font-black text-2xl mb-1">25%</div>
+                            <h4 class="font-bold text-gray-800 text-lg mb-2">Rp 13,75 Juta</h4>
+                            <p class="text-sm text-gray-600">Setelah modul Finance, Marketing, & LMS (Tutor/Raport)
+                                selesai.</p>
+                        </div>
+                        <div class="bg-corporate-900 text-white p-6 rounded-xl shadow-lg transform md:scale-105">
+                            <div class="text-green-400 font-black text-2xl mb-1">20%</div>
+                            <h4 class="font-bold text-white text-lg mb-2">Rp 11 Juta</h4>
+                            <p class="text-sm text-gray-300">Pelunasan saat integrasi Modul View-Only, Go-Live, &
+                                Handover.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: Timeline -->
+        <div class="slide">
+            <div class="slide-content text-center flex flex-col justify-center items-center">
+                <h2 class="text-3xl font-bold text-corporate-900 mb-2">Roadmap & Timeline Eksekusi</h2>
+                <p class="text-xl text-accent-600 font-semibold mb-10">Total Waktu: 5 - 6 Bulan</p>
+
+                <div class="w-full max-w-5xl grid grid-cols-2 md:grid-cols-6 gap-4 text-left">
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="font-bold text-corporate-700 border-b border-gray-200 pb-2 mb-2">Bulan 1</div>
+                        <h4 class="font-bold text-sm text-gray-800 mb-1">Foundation</h4>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• Analisis Detail & DB</li>
+                            <li>• Auth RBAC 7 Peran</li>
+                            <li>• CMS Company Profile</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="font-bold text-corporate-700 border-b border-gray-200 pb-2 mb-2">Bulan 2</div>
+                        <h4 class="font-bold text-sm text-gray-800 mb-1">Public & Pay</h4>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• Pendaftaran</li>
+                            <li>• Integrasi Midtrans</li>
+                            <li>• Kwitansi & Quota</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="font-bold text-corporate-700 border-b border-gray-200 pb-2 mb-2">Bulan 3</div>
+                        <h4 class="font-bold text-sm text-gray-800 mb-1">Direksi & Form</h4>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• Dashboard 3 Divisi</li>
+                            <li>• Form Builder (SP dll)</li>
+                            <li>• Upload Dokumen</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="font-bold text-corporate-700 border-b border-gray-200 pb-2 mb-2">Bulan 4</div>
+                        <h4 class="font-bold text-sm text-gray-800 mb-1">KPI & Scoreboard</h4>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• Grafik Finansial</li>
+                            <li>• Branch Scoreboard</li>
+                            <li>• Laporan Omzet</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                        <div class="font-bold text-corporate-700 border-b border-gray-200 pb-2 mb-2">Bulan 5</div>
+                        <h4 class="font-bold text-sm text-gray-800 mb-1">Modul LMS</h4>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• Tutor/Member Panel</li>
+                            <li>• Daily Assessment</li>
+                            <li>• DRM View-Only Modul</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                        <div class="font-bold text-green-700 border-b border-green-200 pb-2 mb-2">Bulan 6</div>
+                        <h4 class="font-bold text-sm text-gray-800 mb-1">Polish & Live</h4>
+                        <ul class="text-xs text-gray-600 space-y-1">
+                            <li>• UAT & Bug Fixing</li>
+                            <li>• Migrasi Data</li>
+                            <li>• Training & Handover</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 12: Langkah Lanjutan -->
+        <div class="slide">
+            <div class="slide-content text-center flex flex-col justify-center items-center">
+                <h2 class="text-3xl font-bold text-corporate-900 mb-10">3 Langkah Ke Depan</h2>
+
+                <div class="flex flex-col md:flex-row gap-8 w-full max-w-4xl text-left">
+                    <div class="flex-1 flex items-start">
+                        <div class="text-4xl font-black text-gray-200 mr-4">01</div>
+                        <div>
+                            <h3 class="font-bold text-xl text-corporate-800 mb-2">Review & Klarifikasi</h3>
+                            <p class="text-gray-600 text-sm">Mindsia melakukan review internal atas proposal ini dan
+                                meminta klarifikasi terkait batasan scope atau penyesuaian anggaran.</p>
+                        </div>
+                    </div>
+                    <div class="flex-1 flex items-start">
+                        <div class="text-4xl font-black text-gray-200 mr-4">02</div>
+                        <div>
+                            <h3 class="font-bold text-xl text-corporate-800 mb-2">Sign-Off Kontrak</h3>
+                            <p class="text-gray-600 text-sm">Penandatanganan Memorandum of Understanding (MoU) atau
+                                Surat Perjanjian Kerja Sama, dilanjutkan pembayaran Termin 1 (DP).</p>
+                        </div>
+                    </div>
+                    <div class="flex-1 flex items-start">
+                        <div class="text-4xl font-black text-accent-200 mr-4">03</div>
+                        <div>
+                            <h3 class="font-bold text-xl text-accent-600 mb-2">Kick-Off Project</h3>
+                            <p class="text-gray-600 text-sm">Workshop pendalaman scope (flowchart/SOP) selama 2-3 hari.
+                                Setelah itu proses coding Bulan 1 resmi dimulai.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: Closing -->
+        <div class="slide">
+            <div class="slide-content flex flex-col items-center justify-center text-center h-full">
+                <i class="fa-solid fa-code-branch text-6xl text-accent-500 mb-6"></i>
+                <h2 class="text-4xl font-bold text-corporate-900 mb-4">Mari bangun sistem yang <br>Mindsia miliki, <span
+                        class="text-accent-600">bukan sewa.</span></h2>
+                <p class="text-lg text-gray-500 mb-12">Proposal ini valid selama 30 Hari.</p>
+
+                <div
+                    class="bg-white px-10 py-8 rounded-2xl shadow-xl border border-gray-100 w-full max-w-lg text-left relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-2 h-full bg-corporate-700"></div>
+                    <h3 class="font-bold text-xl text-corporate-900 mb-6 text-center border-b pb-4">Diskusikan Lebih
+                        Lanjut:</h3>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-10 flex justify-center text-gray-400"><i class="fa-solid fa-user"></i></div>
+                            <div class="font-semibold text-gray-800">Muhammad Ahnaf Nadewa Biyangsa Ahyar</div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 flex justify-center text-green-500 text-xl"><i
+                                    class="fa-brands fa-whatsapp"></i></div>
+                            <div class="font-semibold text-gray-800">[Nomor WA Anda]</div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 flex justify-center text-blue-500"><i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="font-semibold text-gray-800">[Email Anda]</div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 flex justify-center text-purple-500"><i class="fa-solid fa-globe"></i>
+                            </div>
+                            <div class="font-semibold text-gray-800">[Link Web/Portofolio Anda]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Controls (Bottom Absolute) -->
+        <div class="absolute bottom-6 left-0 w-full px-8 flex justify-between items-center z-50">
+            <button onclick="prevSlide()"
+                class="w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center text-corporate-700 transition-colors focus:outline-none backdrop-blur-sm">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div
+                class="bg-white/80 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-semibold text-corporate-700 shadow border border-gray-200">
+                Slide <span id="current-slide-num">1</span> / <span id="total-slide-num">13</span>
+            </div>
+
+            <button onclick="nextSlide()"
+                class="w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center text-corporate-700 transition-colors focus:outline-none backdrop-blur-sm">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Background Decoration -->
+    <div
+        class="fixed bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-corporate-900/50 to-transparent pointer-events-none -z-10">
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('total-slide-num').innerText = totalSlides;
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Update Number
+            document.getElementById('current-slide-num').innerText = currentSlide + 1;
+
+            // Update Progress bar
+            const progressPct = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progress-bar').style.width = progressPct + '%';
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Initialize
+        updateSlide();
+    </script>
+</body>
+
+</html>
