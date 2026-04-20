@@ -43,18 +43,26 @@
             background-image: radial-gradient(circle at top right, #243b53, #102a43);
             color: #333;
             overflow: hidden;
+            overscroll-behavior: none;
         }
 
         #presentation-container {
             position: relative;
             width: 100%;
             max-width: 1280px;
-            height: 85vh;
-            margin: 4vh auto;
+            height: 100vh;
+            margin: 0 auto;
             background: #ffffff;
-            border-radius: 1.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            #presentation-container {
+                height: 85vh;
+                margin: 4vh auto;
+                border-radius: 1.5rem;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            }
         }
 
         .slide {
@@ -63,13 +71,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            padding: 3rem 4rem;
+            padding: 1.5rem;
             opacity: 0;
             transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
             pointer-events: none;
             transform: translateY(20px);
             display: flex;
             flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .slide {
+                padding: 3rem 4rem;
+            }
         }
 
         .slide.active {
@@ -90,30 +104,24 @@
             transform: translateY(0);
         }
 
-        .slide.active .slide-content>*:nth-child(1) {
-            transition-delay: 0.1s;
-        }
-
-        .slide.active .slide-content>*:nth-child(2) {
-            transition-delay: 0.2s;
-        }
-
-        .slide.active .slide-content>*:nth-child(3) {
-            transition-delay: 0.3s;
-        }
-
-        .slide.active .slide-content>*:nth-child(4) {
-            transition-delay: 0.4s;
-        }
-
-        .slide.active .slide-content>*:nth-child(5) {
-            transition-delay: 0.5s;
-        }
+        .slide.active .slide-content>*:nth-child(1) { transition-delay: 0.1s; }
+        .slide.active .slide-content>*:nth-child(2) { transition-delay: 0.2s; }
+        .slide.active .slide-content>*:nth-child(3) { transition-delay: 0.3s; }
+        .slide.active .slide-content>*:nth-child(4) { transition-delay: 0.4s; }
+        .slide.active .slide-content>*:nth-child(5) { transition-delay: 0.5s; }
 
         .slide-content {
             flex-grow: 1;
             overflow-y: auto;
-            padding-right: 1rem;
+            padding-right: 0.5rem;
+            padding-bottom: 4rem; /* Buffer for navigation buttons */
+        }
+
+        @media (min-width: 768px) {
+            .slide-content {
+                padding-right: 1rem;
+                padding-bottom: 2rem;
+            }
         }
 
         .slide-content::-webkit-scrollbar {
@@ -157,7 +165,7 @@
 
                 <div
                     class="mt-auto border-t border-gray-200 pt-6 w-full max-w-lg flex justify-between items-end text-left">
-                    <div>
+                    <div class="mb-4 md:mb-0">
                         <p class="text-xs text-gray-500 uppercase tracking-wider mb-1">Disiapkan Oleh</p>
                         <p class="font-bold text-corporate-700">M Ahnaf Nadewa B. A.</p>
                         <p class="text-sm text-accent-600 font-medium"><i class="fa-solid fa-laptop-code mr-1"></i>
@@ -203,8 +211,8 @@
                     </div>
                 </div>
 
-                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                    <p class="text-gray-700 leading-relaxed">
+                <div class="bg-gray-50 p-4 md:p-6 rounded-xl border border-gray-200">
+                    <p class="text-sm md:text-base text-gray-700 leading-relaxed">
                         <strong class="text-corporate-900">Intisari:</strong> Proposal ini membangun sistem end-to-end
                         sesuai lingkup rapat HR: company profile, pendaftaran terintegrasi payment gateway, dashboard
                         multi-peran (Direksi, Manager, Tutor, Member), dengan proteksi modul <i>view-only</i>. Investasi
@@ -257,7 +265,7 @@
         <!-- SLIDE 4: Lingkup Sistem -->
         <div class="slide">
             <div class="slide-content text-center flex flex-col items-center justify-center">
-                <h2 class="text-4xl font-bold text-corporate-900 mb-2">Lingkup Sistem Terpadu</h2>
+                <h2 class="text-2xl md:text-4xl font-bold text-corporate-900 mb-2">Lingkup Sistem Terpadu</h2>
                 <p class="text-lg text-gray-600 mb-10 max-w-3xl">Dipetakan ke dalam 4 domain utama hasil eskalasi
                     kebutuhan Mindsia.</p>
 
@@ -378,7 +386,7 @@
         <div class="slide">
             <div class="slide-content">
                 <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold text-corporate-900">Total Cost of Ownership (3 Tahun)</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-corporate-900">Total Cost of Ownership (3 Tahun)</h2>
                     <p class="text-gray-600">Kapan Custom Build melewati SaaS dari sisi efisiensi biaya kumulatif?</p>
                 </div>
 
@@ -441,7 +449,7 @@
         <div class="slide">
             <div class="slide-content">
                 <div class="text-center mb-6">
-                    <h2 class="text-3xl font-bold text-corporate-900">Rincian Investasi Pembuatan</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-corporate-900">Rincian Investasi Pembuatan</h2>
                     <p class="text-gray-600">Empat opsi paket modular disesuaikan dengan budget & prioritas kebutuhan
                         Mindsia.</p>
                 </div>
@@ -794,7 +802,7 @@
             <div class="slide-content text-center flex flex-col justify-center items-center">
                 <h2 class="text-3xl font-bold text-corporate-900 mb-10">3 Langkah Ke Depan</h2>
 
-                <div class="flex flex-col md:flex-row gap-8 w-full max-w-4xl text-left">
+                <div class="flex flex-col md:flex-row gap-6 md:gap-8 w-full max-w-4xl text-left">
                     <div class="flex-1 flex items-start">
                         <div class="text-4xl font-black text-gray-200 mr-4">01</div>
                         <div>
@@ -827,9 +835,9 @@
         <div class="slide">
             <div class="slide-content flex flex-col items-center justify-center text-center h-full">
                 <i class="fa-solid fa-code-branch text-6xl text-accent-500 mb-6"></i>
-                <h2 class="text-4xl font-bold text-corporate-900 mb-4">Mari bangun sistem yang <br>Mindsia miliki, <span
+                <h2 class="text-3xl md:text-4xl font-bold text-corporate-900 mb-4">Mari bangun sistem yang <br class="hidden md:block">Mindsia miliki, <span
                         class="text-accent-600">bukan sewa.</span></h2>
-                <p class="text-lg text-gray-500 mb-12">Proposal ini valid selama 30 Hari.</p>
+                <p class="text-base md:text-lg text-gray-500 mb-8 md:mb-12">Proposal ini valid selama 30 Hari.</p>
 
                 <div
                     class="bg-white px-10 py-8 rounded-2xl shadow-xl border border-gray-100 w-full max-w-lg text-left relative overflow-hidden">
@@ -863,7 +871,7 @@
         </div>
 
         <!-- Navigation Controls (Bottom Absolute) -->
-        <div class="absolute bottom-6 left-0 w-full px-8 flex justify-between items-center z-50">
+        <div class="absolute bottom-4 md:bottom-6 left-0 w-full px-4 md:px-8 flex justify-between items-center z-50">
             <button onclick="prevSlide()"
                 class="w-10 h-10 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center text-corporate-700 transition-colors focus:outline-none backdrop-blur-sm">
                 <i class="fa-solid fa-chevron-left"></i>
